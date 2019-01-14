@@ -1,0 +1,55 @@
+{
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://example.com/root.json",
+  "type": "object",
+  "title": "The Root Schema",
+  "required": [
+    "email",
+    "password",
+    "id",
+    "createdAt"
+  ],
+  "properties": {
+    "email": {
+      "$id": "#/properties/email",
+      "type": "string",
+      "title": "The Email Schema",
+      "default": "",
+      "examples": [
+        "sydney@fife"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "password": {
+      "$id": "#/properties/password",
+      "type": "string",
+      "title": "The Password Schema",
+      "default": "",
+      "examples": [
+        "pistol"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "id": {
+      "$id": "#/properties/id",
+      "type": "string",
+      "title": "The Id Schema",
+      "default": "",
+      "examples": [
+        "173"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "createdAt": {
+      "$id": "#/properties/createdAt",
+      "type": "string",
+      "title": "The Createdat Schema",
+      "default": "",
+      "examples": [
+        "2019-01-14T11:31:13.939Z"
+      ],
+      "pattern": "^(.*)$"
+    }
+  }
+}

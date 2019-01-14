@@ -1,0 +1,16 @@
+{
+  "type": "object",
+  "properties": [
+    {
+      "contains": {
+        "properties": {
+          "type": "string",
+            "patern": [
+              "Gdeorge"
+            ]
+
+        }
+      }
+    }
+  ]
+}
