@@ -1,4 +1,4 @@
 selenium
 pytest
 requests
-jsonschema
+jsonschema==3.0.0a5

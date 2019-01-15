@@ -1,16 +1,55 @@
 {
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://example.com/root.json",
   "type": "object",
-  "properties": [
-    {
+  "required": [
+    "data"
+  ],
+  "properties": {
+    "data": {
+      "$id": "#/properties/data",
+      "type": "array",
       "contains": {
+          "type": "object",
+        "properties":{
+          "first_name":{
+            "type":"string",
+            "const":"George"
+          }
+        }
+        },
+      "items": {
+        "$id": "#/properties/data/items",
+        "type": "object",
+        "required": [
+          "id",
+          "first_name",
+          "last_name",
+          "avatar"
+        ],
         "properties": {
-          "type": "string",
-            "patern": [
-              "Gdeorge"
-            ]
-
+          "id": {
+            "$id": "#/properties/data/items/properties/id",
+            "type": "integer"
+          },
+          "first_name": {
+            "$id": "#/properties/data/items/properties/first_name",
+            "type": "string",
+            "pattern": "^(.*)$"
+          },
+          "last_name": {
+            "$id": "#/properties/data/items/properties/last_name",
+            "type": "string",
+            "pattern": "^(.*)$"
+          },
+          "avatar": {
+            "$id": "#/properties/data/items/properties/avatar",
+            "type": "string",
+            "pattern": "^(.*)$"
+          }
         }
       }
     }
-  ]
+  }
 }

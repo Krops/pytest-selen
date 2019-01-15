@@ -4,7 +4,6 @@ import requests as req
 from jsonschema import validate
 import json
 
-
 # def test_facebook_on():
 #    capabilities = FirefoxOptions()
 #    desired_caps = capabilities.to_capabilities()
@@ -19,6 +18,7 @@ import json
 #    driver.quit()
 
 server_name = "https://reqres.in"
+
 
 def test_two():
     validate_get_json_request("/api/users?page=2", "test_two_schema")
@@ -42,10 +42,20 @@ def test_six():
 def test_seven():
     validate_get_json_request("/api/users", "test_seven_schema")
 
+def test_eight():
+    with open('resources/schemas/{}.json'.format("test_eight_schema"), 'r') as f:
+        schema = json.load(f)
+    validate([
+        "life",
+        "universe",
+        "everything",
+        8
+    ], schema=schema)
+
 
 def validate_get_json_request(api, schema_name):
     resp = req.get(server_name + api)
-    assert resp.status_code == 200
+    # assert resp.status_code == 200
     with open('resources/schemas/{}.json'.format(schema_name), 'r') as f:
         schema = json.load(f)
     validate(resp.json(), schema=schema)
