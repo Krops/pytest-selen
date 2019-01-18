@@ -14,7 +14,9 @@ services:
     links:
       - selenoid
     ports:
-      - "8080:8080"
+      - "8084:8080"
+    depends_on:
+      - selenoid
     command: ["--selenoid-uri", "http://selenoid:4444"]
   mytest:
     build:
@@ -26,3 +28,27 @@ services:
     depends_on:
       - selenoid
       - selenoid-ui
+    volumes:
+      - report_volume:/tests
+  myreport:
+    build:
+      context: .
+      dockerfile: DockerAllure
+    network_mode: bridge
+    ports:
+      - "8082:8081"
+    depends_on:
+      - mytest
+    volumes:
+      - report_volume:/tests
+  mylocust:
+    build:
+      context: .
+      dockerfile: DockerLocust
+    network_mode: bridge
+    ports:
+      - "8083:8086"
+    depends_on:
+      - mytest
+volumes:
+  report_volume: {}

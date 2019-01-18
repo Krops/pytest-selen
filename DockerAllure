@@ -1,0 +1,11 @@
+FROM ubuntu:16.04
+ENV DEBIAN_FRONTEND noninteractive
+RUN apt-get update -y
+RUN apt-get install software-properties-common -y
+RUN apt-add-repository ppa:qameta/allure -y
+RUN apt-get update -y
+RUN apt-get install allure -y
+RUN mkdir -p /tests
+WORKDIR /tests
+CMD allure serve report/ -p 8081
+
